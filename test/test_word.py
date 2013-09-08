@@ -1,5 +1,6 @@
 from unittest import TestCase
 from lib.word import Word
+from hamcrest import *
 
 
 class TestWord(TestCase):
@@ -8,23 +9,23 @@ class TestWord(TestCase):
         self.word = Word("noon")
 
     def test_first_is_equal(self):
-        self.assertEquals("n", self.word.letter_at(0))
+        assert_that(self.word.letter_at(0), is_("n"))
 
     def test_get_last_index(self):
-        self.assertEquals(3, self.word.last_index())
+        assert_that(self.word.last_index(), is_(3))
 
     def test_second_letter_equal(self):
-        self.assertEquals("o", self.word.letter_at(1))
+        assert_that(self.word.letter_at(1), is_("o"))
 
     def test_third_letter_is_equal(self):
-        self.assertEquals("o", self.word.letter_at(2))
+        assert_that(self.word.letter_at(2), is_("o"))
 
     def test_not_equal(self):
-        self.assertNotEqual("o", self.word.letter_at(3))
+        assert_that(self.word.letter_at(3), is_not("o"))
 
     def test_return_word_length(self):
-        self.assertEquals(4, self.word.length())
+        assert_that(self.word.length(), is_(4))
 
     def test_returns_word_length_given_longer_word(self):
         word = Word("spontaneous")
-        self.assertEquals(11, word.length())
+        assert_that(word.length(), is_(11))
