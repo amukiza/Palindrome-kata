@@ -1,5 +1,3 @@
-from lib.word import Word
-
 class Palindrome:
 
     def __init__(self, word):
@@ -15,8 +13,8 @@ class Palindrome:
         end = self.get_last_index()
         start = 0
         while self._is_not_middle(start, end) and self._are_equal_at(start, end):
-            start = start + 1
-            end = end - 1
+            start += 1
+            end -= 1
         return self._is_middle(start, end)
 
     def _are_equal_at(self, index_1, index_2):
