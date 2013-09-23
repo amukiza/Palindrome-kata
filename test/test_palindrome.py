@@ -1,7 +1,7 @@
 from unittest import TestCase
 from lib.word import Word
 from lib.palindrome import Palindrome
-from hamcrest import *
+from hamcrest import assert_that, is_
 
 
 class TestPalindrome(TestCase):
@@ -9,7 +9,7 @@ class TestPalindrome(TestCase):
     def test_get_letter_at(self):
         word = Word("noon")
         palindrome = Palindrome(word)
-        
+
         assert_that(palindrome.get_letter_at(0), is_("n"))
 
     def test_returns_legth_of_another_word(self):
@@ -36,3 +36,8 @@ class TestPalindrome(TestCase):
         word = Word("racecar")
         palindrome = Palindrome(word)
         assert_that(palindrome.is_palindrome(), is_(True))
+
+    def test_returns_false_when_given_a_none_palindrom(self):
+        word = Word("dented")
+        palindrome = Palindrome(word)
+        assert_that(palindrome.is_palindrome(), is_(False))
